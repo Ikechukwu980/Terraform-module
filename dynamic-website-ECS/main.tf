@@ -83,3 +83,16 @@ module "auto_scaling_group" {
   ecs_cluster_name = module.ecs.ecs_cluster_name
   ecs_service_name =  module.ecs.ecs_service_name
 }
+# creating a Rouste 53
+module "roust53" {
+  source = "../module/Route53"
+  domain_name                        = module.ACM.domain_name  
+  record_name                        = var.record_name
+  application_load_balancer_dsn_name = module.application_load_balancer.application_load_balancer_dns_name 
+  application_load_balancer_zone_id  =  module.application_load_balancer.application_load_balancer_zone_id
+
+}
+
+output "website_URL" {
+  value = join ("",["https://", var.record_name, ".", var.domain_name])
+}

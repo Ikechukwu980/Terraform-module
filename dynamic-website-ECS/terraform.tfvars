@@ -10,4 +10,4 @@ private_data_subnet_az2_cidr = "10.0.5.0/24"
 domain_name                  = "anthony980.net"
 alternative_name             = "*.anthony980.net"
 container_image              = "220894557754.dkr.ecr.us-east-1.amazonaws.com/ecs-deployment:latest"
-
+record_name                  = "www"            
