@@ -76,3 +76,10 @@ module "ecs" {
   private_app_subnet_az2_id   =  module.vpc.private_app_subnet_az2_id
   alb_target_group_arn        =  module.application_load_balancer.alb_target_group_arn
 }
+
+# creating an ASG
+module "auto_scaling_group" {
+  source           = "../module/ASG"
+  ecs_cluster_name = module.ecs.ecs_cluster_name
+  ecs_service_name =  module.ecs.ecs_service_name
+}
